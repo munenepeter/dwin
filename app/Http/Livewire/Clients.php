@@ -5,13 +5,13 @@ namespace App\Http\Livewire;
 use Carbon\Carbon;
 use App\Models\Underwriter;
 use App\Models\Client;
-use App\Models\Payment;
+use App\Models\Insurance;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class Clients extends Component {
     use WithPagination;
-    public  $underwriters, $full_names, $policy_number, $risk_id,
+    public  $underwriters, $insurance_types, $full_names, $policy_number, $risk_id,
         $political_risk, $excess_protector, $basic_premium, $annual_expiry_date,
         $underwriter, $insurance, $clientId, $updateClient = false, $addClient = false, $viewClient = false;
     /**
@@ -58,7 +58,7 @@ class Clients extends Component {
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function render() {
-        //  $this->clients = Client::all();;
+        $this->insurance_types = Insurance::all();;
         $this->underwriters = Underwriter::all();
         return view('livewire.clients.clients', [
             'clients' => Client::latest()->paginate(5),
@@ -84,6 +84,7 @@ class Clients extends Component {
             Client::create([
                 'full_names' => $this->full_names,
                 'policy_number' => $this->policy_number,
+                'class_of_insurance' => $this->insurance,
                 'risk_id' => $this->risk_id,
                 'political_risk' => $this->political_risk,
                 'excess_protector' => $this->excess_protector,
@@ -172,14 +173,14 @@ class Clients extends Component {
             if (!$client) {
                 session()->flash('error', 'Client not found');
             } else {
-                $this->name = $client->full_names;
-                $this->email = $client->email;
-                $this->phone = $client->phone;
-                $this->notes = $client->notes;
-                $this->clientId = $client->id;
-                $this->updateClient = false;
-                $this->addClient = false;
-                $this->viewClient = true;
+                // $this->name = $client->full_names;
+                // $this->email = $client->email;
+                // $this->phone = $client->phone;
+                // $this->notes = $client->notes;
+                // $this->clientId = $client->id;
+                // $this->updateClient = false;
+                // $this->addClient = false;
+                // $this->viewClient = true;
             }
         } catch (\Exception $ex) {
             session()->flash('error', 'Something goes wrong!!');
