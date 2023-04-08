@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\Plan;
 use App\Models\Insurance;
+use App\Models\Underwriter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
