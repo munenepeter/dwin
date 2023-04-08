@@ -86,17 +86,16 @@ class Clients extends Component {
             Client::create([
                 'full_names' => $this->full_names,
                 'policy_number' => $this->policy_number,
-                'class_of_insurance' => $this->insurance,
                 'risk_id' => $this->risk_id,
                 'sum_insured' => $this->sum_insured,
                 'political_risk' => $this->political_risk,
                 'excess_protector' => $this->excess_protector,
                 'basic_premium' => $this->basic_premium,
-                'total_annual_premium' => $this->basic_premium + $this->excess_protector + $this->political_risk,
+                'annual_total_premium' => $this->basic_premium + $this->excess_protector + $this->political_risk,
                 'annual_expiry_date' => $this->annual_expiry_date,
                 'annual_renewal_date' =>  date("Y-m-d", strtotime('+1 year', strtotime($this->annual_expiry_date))),
-                'underwriter' => $this->underwriter,
-                'insurance' => $this->insurance
+                'underwriter_id' => $this->underwriter,
+                'insurance_id' => $this->insurance
             ]);
             session()->flash('success', 'Client Created Successfully!!');
             $this->resetFields();
