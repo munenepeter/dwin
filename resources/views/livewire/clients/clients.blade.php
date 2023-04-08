@@ -30,20 +30,31 @@
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-6 py-3">
-                                Client
+                                Names
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Phone
+                                Policy No
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                plan
+                                Risk ID
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                due date
+                                Political Risk
                             </th>
-
                             <th scope="col" class="px-6 py-3">
-                                Status
+                                Excess Protector
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Basic Premium
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Annual Total Premium
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Annual Expiry Date
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Annual Renewal Date
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Action
@@ -56,10 +67,9 @@
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 <p class="font-medium text-gray-700">{{$client->full_names}}</p>
-                                <p class="text-gray-400 text-xs">{{$client->email}}</p>
                             </th>
                             <td class="px-6 py-4">
-                                {{$client->phone}}
+                                {{$client->policy_number}}
                             </td>
                             <td class="px-6 py-4">
                                 <p class="font-medium text-gray-700">{{ucfirst($client->plan->name)}}</p>
