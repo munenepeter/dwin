@@ -91,7 +91,10 @@
                     <x-jet-label for="annual_expiry_date" value="{{ __('Annual Expiry Date') }}" />
                     <x-jet-input id="annual_expiry_date" wire:model="annual_expiry_date" placeholder="Enter the risk_id number" class="block mt-1 w-full" type="date" name="annual_expiry_date" :value="old('annual_expiry_date')" required autofocus />
                 </div>
-
+                <div>
+                    <x-jet-label for="sum_insured" value="{{ __('Sum Insured') }}" />
+                    <x-jet-input id="sum_insured" wire:model="sum_insured" placeholder="KshXXX XXX" class="block mt-1 w-full" type="text" pattern="[0-9]{9}" name="sum_insured" :value="old('sum_insured')" required autofocus />
+                </div>
             </div>
         </form>
 

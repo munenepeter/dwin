@@ -11,7 +11,7 @@ use Livewire\WithPagination;
 
 class Clients extends Component {
     use WithPagination;
-    public  $underwriters, $insurance_types, $full_names, $policy_number, $risk_id,
+    public  $underwriters, $insurance_types, $full_names, $policy_number, $risk_id, $sum_insured,
         $political_risk, $excess_protector, $basic_premium, $annual_expiry_date,
         $underwriter, $insurance, $clientId, $updateClient = false, $addClient = false, $viewClient = false;
     /**
@@ -28,6 +28,7 @@ class Clients extends Component {
         'full_names' => 'required',
         'policy_number' => 'required|numeric',
         'risk_id' => 'required|numeric',
+        'sum_insured' => 'required|numeric',
         'political_risk' => 'required|numeric',
         'excess_protector' => 'required|numeric',
         'basic_premium' => 'required|numeric',
@@ -45,6 +46,7 @@ class Clients extends Component {
         $this->full_names = '';
         $this->policy_number = '';
         $this->risk_id = '';
+        $this->sum_insured = '';
         $this->political_risk = '';
         $this->excess_protector = '';
         $this->basic_premium = '';
@@ -86,6 +88,7 @@ class Clients extends Component {
                 'policy_number' => $this->policy_number,
                 'class_of_insurance' => $this->insurance,
                 'risk_id' => $this->risk_id,
+                'sum_insured' => $this->sum_insured,
                 'political_risk' => $this->political_risk,
                 'excess_protector' => $this->excess_protector,
                 'basic_premium' => $this->basic_premium,
