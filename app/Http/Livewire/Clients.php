@@ -13,7 +13,7 @@ class Clients extends Component {
     use WithPagination;
     public  $underwriters, $full_names, $policy_number, $risk_id,
         $political_risk, $excess_protector, $basic_premium, $annual_expiry_date,
-        $plan, $clientId, $updateClient = false, $addClient = false, $viewClient = false;
+        $underwriter, $insurance, $clientId, $updateClient = false, $addClient = false, $viewClient = false;
     /**
      * delete action listener
      */
@@ -25,11 +25,15 @@ class Clients extends Component {
      * List of add/edit form rules
      */
     protected $rules = [
-        'name' => 'required',
-        'email' => 'required',
+        'full_names' => 'required',
+        'policy_number' => 'required|numeric',
+        'risk_id' => 'required|numeric',
+        'political_risk' => 'required|numeric',
+        'excess_protector' => 'required|numeric',
+        'basic_premium' => 'required|numeric',
         'annual_expiry_date' => 'required',
-        'plan' => 'required',
-        'phone' => 'required|min:9|numeric'
+        'underwriter' => 'required',
+        'insurance' => 'required'
     ];
 
     /**
@@ -37,12 +41,16 @@ class Clients extends Component {
      * @return void
      */
     public function resetFields() {
-        $this->name = '';
-        $this->email = '';
-        $this->phone = '';
-        $this->plan_start_at = '';
-        $this->plan = '';
-        $this->notes = '';
+
+        $this->full_names = '';
+        $this->policy_number = '';
+        $this->risk_id = '';
+        $this->political_risk = '';
+        $this->excess_protector = '';
+        $this->basic_premium = '';
+        $this->annual_expiry_date = '';
+        $this->underwriter = '';
+        $this->insurance = '';
     }
 
     /**
@@ -74,13 +82,17 @@ class Clients extends Component {
         $this->validate();
         try {
             Client::create([
-                'full_names' => $this->name,
-                'email' => $this->email,
-                'phone' => $this->phone,
-                'plan_start_at' => $this->plan_start_at,
-                'plan_end_at' => date("Y-m-d", strtotime('+1 month', strtotime($this->plan_start_at))),
-                'plan_id' => $this->plan,
-                'notes' => $this->notes
+                'full_names' => $this->full_names,
+                'policy_number' => $this->policy_number,
+                'risk_id' => $this->risk_id,
+                'political_risk' => $this->political_risk,
+                'excess_protector' => $this->excess_protector,
+                'basic_premium' => $this->basic_premium,
+                'total_annual_premium' => $this->basic_premium + $this->excess_protector + $this->political_risk,
+                'annual_expiry_date' => $this->annual_expiry_date,
+                'annual_renewal_date' =>  date("Y-m-d", strtotime('+1 year', strtotime($this->annual_expiry_date))),
+                'underwriter' => $this->underwriter,
+                'insurance' => $this->insurance
             ]);
             session()->flash('success', 'Client Created Successfully!!');
             $this->resetFields();
@@ -102,13 +114,13 @@ class Clients extends Component {
             if (!$client) {
                 session()->flash('error', 'Client not found');
             } else {
-                $this->name = $client->full_names;
-                $this->email = $client->email;
-                $this->phone = $client->phone;
-                $this->notes = $client->notes;
-                $this->clientId = $client->id;
-                $this->updateClient = true;
-                $this->addClient = false;
+                // $this->name = $client->full_names;
+                // $this->email = $client->email;
+                // $this->phone = $client->phone;
+                // $this->notes = $client->notes;
+                // $this->clientId = $client->id;
+                // $this->updateClient = true;
+                // $this->addClient = false;
             }
         } catch (\Exception $ex) {
             session()->flash('error', 'Something goes wrong!!');

@@ -31,7 +31,7 @@
                 </div>
                 <div>
                     <x-jet-label for="policy_number" value="{{ __('Policy Number') }}" />
-                    <x-jet-input id="policy_number" wire:model="policy_number" placeholder="XXX XXX XXX" class="block mt-1 w-full" type="policy_number" name="policy_number" :value="old('policy_number')" required autofocus />
+                    <x-jet-input id="policy_number" wire:model="policy_number" placeholder="XXX XXX XXX" class="block mt-1 w-full" type="text" name="policy_number" :value="old('policy_number')" required autofocus />
                 </div>
 
             </div>
