@@ -19,10 +19,10 @@
                         {{ __('Clients') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('plans') }}" :active="request()->routeIs('plans')">
-                        {{ __('Plans') }}
+                        {{ __('Underwriters') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('payments') }}" :active="request()->routeIs('payments')">
-                        {{ __('Payments') }}
+                        {{ __('Insurance Types') }}
                     </x-jet-nav-link>
                 </div>
             </div>
