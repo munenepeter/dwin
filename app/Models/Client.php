@@ -11,8 +11,8 @@ class Client extends Model {
     use HasFactory;
     protected $guarded = [];
 
-    public function plan() {
-        return $this->belongsTo(Plan::class);
+    public function underwriter() {
+        return $this->belongsTo(Underwriter::class);
     }
     public function insurance() {
         return $this->belongsTo(Insurance::class);
