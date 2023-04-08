@@ -36,6 +36,9 @@
                                 Policy No
                             </th>
                             <th scope="col" class="px-6 py-3">
+                                Sum Insured
+                            </th>
+                            <th scope="col" class="px-6 py-3">
                                 Risk ID
                             </th>
                             <th scope="col" class="px-6 py-3">
