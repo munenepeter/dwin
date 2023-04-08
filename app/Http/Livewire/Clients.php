@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Carbon\Carbon;
-use App\Models\Plan;
+use App\Models\Underwriter;
 use App\Models\Client;
 use App\Models\Payment;
 use Livewire\Component;
@@ -50,7 +50,7 @@ class Clients extends Component {
      */
     public function render() {
         //  $this->clients = Client::all();;
-        $this->plans = Plan::all();
+        $this->plans = Underwriter::all();
         return view('livewire.clients.clients', [
             'clients' => Client::latest()->paginate(5),
         ]);
