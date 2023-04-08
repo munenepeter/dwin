@@ -20,10 +20,16 @@
         <div class="p-4">
             <div class="flex justify-end mb-2">
                 @if(!$addClient)
+                <x-jet-button wire:click="newReport()" class="mr-4 bg-rose-500">
+                    Generate Report
+                </x-jet-button>
+                @endif
+                @if(!$addClient)
                 <x-jet-button wire:click="addClient()" class="bg-green-500">
                     Add New client
                 </x-jet-button>
                 @endif
+
             </div>
             <div class="relative overflow-x-auto">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -33,14 +39,18 @@
                                 Names
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Policy No
+                                Underwriter
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Sum Insured
+                                Policy No
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Risk ID
                             </th>
+                            <th scope="col" class="px-6 py-3">
+                                Sum Insured
+                            </th>
+
                             <th scope="col" class="px-6 py-3">
                                 Political Risk
                             </th>
@@ -54,10 +64,7 @@
                                 Annual Total Premium
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Annual Expiry Date
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Annual Renewal Date
+                                Annual Dates
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Action
@@ -72,21 +79,36 @@
                                 <p class="font-medium text-gray-700">{{$client->full_names}}</p>
                             </th>
                             <td class="px-6 py-4">
+                                <p class="font-medium text-gray-700">{{ucfirst($client->underwriter->name)}}</p>
+                            </td>
+                            <td class="px-6 py-4">
                                 {{$client->policy_number}}
                             </td>
                             <td class="px-6 py-4">
-                                <p class="font-medium text-gray-700">{{ucfirst($client->plan->name)}}</p>
-                                <p class="text-gray-400 text-xs">(renews after {{$client->plan->renew_period}} mon)</p>
+                                {{$client->risk_id}}
                             </td>
                             <td class="px-6 py-4">
-
-                                <p class="font-medium text-gray-700">{!!date("j<\s\u\p>S</\s\u\p> M Y",strtotime($client->plan_end_at))!!}</p>
-                                <p class="text-gray-400 text-xs">({{Carbon\Carbon::parse($client->plan_end_at)->diffForHumans()}})</p>
-
+                                Ksh{{number_format($client->sum_insured)}}
                             </td>
 
                             <td class="px-6 py-4">
-                                {{ucfirst($client->status)}}
+                                Ksh{{number_format($client->political_risk)}}
+                            </td>
+                            <td class="px-6 py-4">
+                                Ksh{{number_format($client->excess_protector)}}
+                            </td>
+                            <td class="px-6 py-4">
+                                Ksh{{number_format($client->basic_premium)}}
+                            </td>
+                            <td class="px-6 py-4">
+                                Ksh{{number_format($client->annual_total_premium)}}
+                            </td>
+
+
+                            <td class="px-6 py-4">
+                                <p class="font-medium text-gray-700">{!!date("j<\s\u\p>S</\s\u\p> M y",strtotime($client->annual_expiry_date))!!}</p>
+                                <p class="text-gray-400 text-xs">({!!date("j<\s\u\p>S</\s\u\p> M y",strtotime($client->annual_renewal_date))!!})</p>
+
                             </td>
                             <td class="px-6 py-4">
                                 <button title="View Client" wire:click="viewClient({{$client->id}})" class="text-teal-500"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -102,11 +124,6 @@
                                 <button title="Delete client" wire:click="deleteClient({{$client->id}})" class="text-red-500"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6" x-tooltip="tooltip">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
                                     </svg></button>
-                                @if($client->status === 'pending')
-                                <button title="Mark as paid" wire:click="markPaid({{$client->id}})" class="text-orange-500"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
-                                    </svg></button>
-                                @endif
                             </td>
                         </tr>
                         @endforeach

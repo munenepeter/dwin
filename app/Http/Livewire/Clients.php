@@ -66,7 +66,15 @@ class Clients extends Component {
             'clients' => Client::latest()->paginate(5),
         ]);
     }
-
+ /**
+     * Open Add Client form
+     * @return void
+     */
+    public function newReport() {
+        $this->resetFields();
+        $this->addClient = true;
+        $this->updateClient = false;
+    }
     /**
      * Open Add Client form
      * @return void
