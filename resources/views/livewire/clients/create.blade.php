@@ -31,7 +31,7 @@
                 </div>
                 <div>
                     <x-jet-label for="policy_number" value="{{ __('Policy Number') }}" />
-                    <x-jet-input id="policy_number" wire:model="policy_number" placeholder="XXX XXX XXX" class="block mt-1 w-full" type="text" name="policy_number" :value="old('policy_number')" required autofocus />
+                    <x-jet-input id="policy_number" wire:model="policy_number" placeholder="XXX XXX XXX" class="block mt-1 w-full" type="text" pattern="[0-9]{5}" name="policy_number" :value="old('policy_number')" required autofocus />
                 </div>
 
             </div>
@@ -61,7 +61,7 @@
                     <x-jet-label for="insurance" value="{{ __('Class of Insurance') }}" />
                     <select id="insurance" wire:model="insurance" required autofocus class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option>Choose class of insurance</option>
-                        @if (count($underwriters) > 0)
+                        @if (count($insurances) > 0)
                         @foreach ($insurances as $insurance)
                         <option value="{{ $underwriter->id }}"> {{ ucfirst($insurance->name) }}</option>
                         @endforeach
