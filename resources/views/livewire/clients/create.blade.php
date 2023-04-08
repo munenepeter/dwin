@@ -26,30 +26,61 @@
         <form>
             <div class="grid gap-4 mb-4 sm:grid-cols-2">
                 <div>
-                    <x-jet-label for="name" value="{{ __('Full Names') }}" />
-                    <x-jet-input id="name" wire:model="name" placeholder="Enter the name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+                    <x-jet-label for="full_names" value="{{ __('Full Names') }}" />
+                    <x-jet-input id="full_names" wire:model="full_names" placeholder="John Doe" class="block mt-1 w-full" type="text" name="full_names" :value="old('full_names')" required autofocus />
                 </div>
                 <div>
-                    <x-jet-label for="email" value="{{ __('Email') }}" />
-                    <x-jet-input id="email" wire:model="email" placeholder="Enter the email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                    <x-jet-label for="policy_number" value="{{ __('Policy Number') }}" />
+                    <x-jet-input id="policy_number" wire:model="policy_number" placeholder="XXX XXX XXX" class="block mt-1 w-full" type="policy_number" name="policy_number" :value="old('policy_number')" required autofocus />
                 </div>
 
             </div>
             <div class="grid gap-4 mb-4 sm:grid-cols-2">
                 <div>
-                    <x-jet-label for="phone" value="{{ __('Phone Number') }}" />
-                    <x-jet-input id="phone" wire:model="phone" placeholder="7XX XXX XXX" class="block mt-1 w-full" type="tel" pattern="[0-9]{9}" name="name" :value="old('phone')" required autofocus />
+                    <x-jet-label for="basic_premium" value="{{ __('Basic Premium') }}" />
+                    <x-jet-input id="basic_premium" wire:model="basic_premium" placeholder="KshXXX XXX" class="block mt-1 w-full" type="text" pattern="[0-9]{5}" name="basic_premium" :value="old('basic_premium')" required autofocus />
                 </div>
                 <div>
-                    <x-jet-label for="plan" value="{{ __('Plan') }}" />
-                    <select id="plan" wire:model="plan"  required autofocus class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option>Choose a plan</option>
-                        @if (count($plans) > 0)
-                        @foreach ($plans as $plan)
-                        <option value="{{ $plan->id }}"> {{ ucfirst($plan->name) }}</option>
+                    <x-jet-label for="excess_protector" value="{{ __('Excess Protector') }}" />
+                    <x-jet-input id="excess_protector" wire:model="excess_protector" placeholder="KshXXX XXX" class="block mt-1 w-full" type="text" pattern="[0-9]{9}" name="excess_protector" :value="old('excess_protector')" required autofocus />
+                </div>
+            </div>
+            <div class="grid gap-4 mb-4 sm:grid-cols-2">
+                <div>
+                    <x-jet-label for="political_risk" value="{{ __('Political Risk') }}" />
+                    <x-jet-input id="political_risk" wire:model="political_risk" placeholder="KshXXX XXX" class="block mt-1 w-full" type="text" pattern="[0-9]{5}" name="political_risk" :value="old('political_risk')" required autofocus />
+                </div>
+                <div>
+                    <x-jet-label for="risk_id" value="{{ __('Risk ID') }}" />
+                    <x-jet-input id="risk_id" wire:model="risk_id" placeholder="XXX XXX XXX" class="block mt-1 w-full" type="text" pattern="[0-9]{9}" name="risk_id" :value="old('risk_id')" required autofocus />
+                </div>
+            </div>
+            <div class="grid gap-4 mb-4 sm:grid-cols-2">
+                <div>
+
+                    <x-jet-label for="insurance" value="{{ __('Class of Insurance') }}" />
+                    <select id="insurance" wire:model="insurance" required autofocus class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option>Choose class of insurance</option>
+                        @if (count($underwriters) > 0)
+                        @foreach ($insurances as $insurance)
+                        <option value="{{ $underwriter->id }}"> {{ ucfirst($insurance->name) }}</option>
                         @endforeach
                         @else
-                        <option>No plans are available!</option>
+                        <option>No insurances are available!</option>
+                        @endif
+                    </select>
+
+                </div>
+                <div>
+                    <x-jet-label for="underwriter" value="{{ __('Underwriter') }}" />
+                    <select id="underwriter" wire:model="underwriter" required autofocus class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option>Choose a underwriter</option>
+                        @if (count($underwriters) > 0)
+                        @foreach ($underwriters as $underwriter)
+                        <option value="{{ $underwriter->id }}"> {{ ucfirst($underwriter->name) }}</option>
+                        @endforeach
+                        @else
+                        <option>No underwriters are available!</option>
                         @endif
                     </select>
                 </div>
@@ -57,17 +88,10 @@
             </div>
             <div class="grid gap-4 mb-4 sm:grid-cols-2">
                 <div>
-                    <x-jet-label for="plan_start_at" value="{{ __('Subscription Start') }}" />
-                    <x-jet-input id="plan_start_at" wire:model="plan_start_at" placeholder="Enter the phone number" class="block mt-1 w-full" type="date" name="plan_start_at" :value="old('plan_start_at')" required autofocus />
+                    <x-jet-label for="annual_expiry_date" value="{{ __('Annual Expiry Date') }}" />
+                    <x-jet-input id="annual_expiry_date" wire:model="annual_expiry_date" placeholder="Enter the risk_id number" class="block mt-1 w-full" type="date" name="annual_expiry_date" :value="old('annual_expiry_date')" required autofocus />
                 </div>
 
-
-            </div>
-            <div class="w-full">
-                <div>
-                    <x-jet-label for="notes" value="{{ __('Client Notes') }}" />
-                    <textarea name="notes" id="notes" wire:model="notes" cols="5" rows="5" required autofocus class="bg-gray-50 border border-green-300 text-gray-900 text-sm focus:ring-orange-600 focus:border-orange-600 block w-full p-2.5 rounded-md shadow-sm"></textarea>
-                </div>
             </div>
         </form>
 

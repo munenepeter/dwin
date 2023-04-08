@@ -11,7 +11,9 @@ use Livewire\WithPagination;
 
 class Clients extends Component {
     use WithPagination;
-    public  $plans, $name, $email, $phone, $notes, $plan_start_at, $plan, $clientId, $updateClient = false, $addClient = false, $viewClient = false;
+    public  $underwriters, $full_names, $policy_number, $risk_id,
+        $political_risk, $excess_protector, $basic_premium, $annual_expiry_date,
+        $plan, $clientId, $updateClient = false, $addClient = false, $viewClient = false;
     /**
      * delete action listener
      */
@@ -25,10 +27,9 @@ class Clients extends Component {
     protected $rules = [
         'name' => 'required',
         'email' => 'required',
-        'plan_start_at' => 'required',
+        'annual_expiry_date' => 'required',
         'plan' => 'required',
-        'phone' => 'required|min:9|numeric',
-        'notes' => 'required'
+        'phone' => 'required|min:9|numeric'
     ];
 
     /**
@@ -50,7 +51,7 @@ class Clients extends Component {
      */
     public function render() {
         //  $this->clients = Client::all();;
-        $this->plans = Underwriter::all();
+        $this->underwriters = Underwriter::all();
         return view('livewire.clients.clients', [
             'clients' => Client::latest()->paginate(5),
         ]);
@@ -95,12 +96,12 @@ class Clients extends Component {
      * @param mixed $id
      * @return void
      */
-    public function editClient($id) { 
+    public function editClient($id) {
         try {
-            $client = Client::findOrFail($id);    
+            $client = Client::findOrFail($id);
             if (!$client) {
                 session()->flash('error', 'Client not found');
-            } else {             
+            } else {
                 $this->name = $client->full_names;
                 $this->email = $client->email;
                 $this->phone = $client->phone;
@@ -148,7 +149,7 @@ class Clients extends Component {
         $this->resetFields();
     }
 
-      /**
+    /**
      * show existing client data in edit client form
      * @param mixed $id
      * @return void
@@ -197,11 +198,11 @@ class Clients extends Component {
                 'plan_end_at' => $last_start_at->addMonth(),
                 'status' => 'paid',
             ]);
-            Payment::create([
-                'period' => $last_start_at1->subMonth()->format('jS M Y') . ' - ' . date('jS M Y', strtotime($client->plan_end_at)),
-                'amount' => $client->plan->amount,
-                'client_id' => $client->id,
-            ]);
+            // Payment::create([
+            //     'period' => $last_start_at1->subMonth()->format('jS M Y') . ' - ' . date('jS M Y', strtotime($client->plan_end_at)),
+            //     'amount' => $client->plan->amount,
+            //     'client_id' => $client->id,
+            // ]);
             session()->flash('success', "Client Updated Successfully!!");
         } catch (\Exception $e) {
             throw new \Exception($e);
