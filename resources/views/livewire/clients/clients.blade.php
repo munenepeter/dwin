@@ -15,6 +15,9 @@
         @if($viewClient)
         @include('livewire.clients.view')
         @endif
+        @if($newReport)
+        @include('livewire.clients.report')
+        @endif
     </div>
     <div class="col-md-8">
         <div class="p-4">

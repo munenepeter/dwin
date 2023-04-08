@@ -13,7 +13,7 @@ class Clients extends Component {
     use WithPagination;
     public  $underwriters, $insurance_types, $full_names, $policy_number, $risk_id, $sum_insured,
         $political_risk, $excess_protector, $basic_premium, $annual_expiry_date,
-        $underwriter, $insurance, $clientId, $updateClient = false, $addClient = false, $viewClient = false;
+        $underwriter, $insurance, $clientId, $newReport = false, $updateClient = false, $addClient = false, $viewClient = false;
     /**
      * delete action listener
      */
@@ -72,7 +72,8 @@ class Clients extends Component {
      */
     public function newReport() {
         $this->resetFields();
-        $this->addClient = true;
+        $this->newReport = true;
+        $this->addClient = false;
         $this->updateClient = false;
     }
     /**
