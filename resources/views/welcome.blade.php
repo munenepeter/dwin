@@ -12,4 +12,20 @@
         @endauth
     </div>
     @endif
+
+    Date
+    name of insurer -- name
+    policy no
+    risk id
+    class of insurance
+    underwiter
+    sum insured
+    basic premium
+    excess protector
+    policali risk
+
+    total annual premium
+    anual expiry date
+    annual renewal date
+
 </x-guest-layout>

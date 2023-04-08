@@ -15,14 +15,16 @@ return new class extends Migration {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
             $table->string('full_names');
-            $table->string('email')->unique();
-            $table->string('phone');
-            $table->string('status')->default('pending');
-            $table->unsignedInteger('plan_id');
-            $table->foreign('plan_id')->references('id')->on('plans');
-            $table->date('plan_start_at');
-            $table->date('plan_end_at');
-            $table->text('notes');
+            $table->unsignedInteger('policy_number');
+            $table->unsignedInteger('risk_id');
+            $table->unsignedInteger('underwriter_id');
+            $table->foreign('underwriter_id')->references('id')->on('underwriter');
+            $table->float("sum_insured", 8, 2);
+            $table->float("political_risk", 8, 2);
+            $table->float("excess_protector", 8, 2);
+            $table->float("basic_premium", 8, 2);
+            $table->date('annual_expiry_date');
+            $table->date('annual_renewal_date');
             $table->timestamps();
         });
     }

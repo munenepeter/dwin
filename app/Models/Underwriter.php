@@ -6,7 +6,7 @@ use App\Models\Client;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Plan extends Model {
+class Underwriter extends Model {
     use HasFactory;
     protected $guarded = [];
 
