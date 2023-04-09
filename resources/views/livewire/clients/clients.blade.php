@@ -37,39 +37,39 @@
             <div class="relative overflow-x-auto">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                            <th scope="col" class="px-6 py-3">
+                        <tr class="space-x-2">
+                            <th scope="col">
                                 Names
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col">
                                 Underwriter
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col">
                                 Policy No
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col">
                                 Risk ID
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col">
                                 Sum Insured
                             </th>
 
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col">
                                 Political Risk
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col">
                                 Excess Protector
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col">
                                 Basic Premium
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col">
                                 Annual Total Premium
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col">
                                 Annual Dates
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col">
                                 Action
                             </th>
                         </tr>
@@ -77,43 +77,43 @@
                     <tbody>
                         @if (!empty($clients))
                         @foreach ($clients as $client)
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <tr class="bg-white border-b space-y-2">
+                            <th scope="row" class="px-2 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 <p class="font-medium text-gray-700">{{$client->full_names}}</p>
                             </th>
-                            <td class="px-6 py-4">
+                            <td>
                                 <p class="font-medium text-gray-700">{{ucfirst($client->underwriter->name)}}</p>
                             </td>
-                            <td class="px-6 py-4">
+                            <td>
                                 {{$client->policy_number}}
                             </td>
-                            <td class="px-6 py-4">
+                            <td>
                                 {{$client->risk_id}}
                             </td>
-                            <td class="px-6 py-4">
+                            <td>
                                 Ksh{{number_format($client->sum_insured)}}
                             </td>
 
-                            <td class="px-6 py-4">
+                            <td>
                                 Ksh{{number_format($client->political_risk)}}
                             </td>
-                            <td class="px-6 py-4">
+                            <td>
                                 Ksh{{number_format($client->excess_protector)}}
                             </td>
-                            <td class="px-6 py-4">
+                            <td>
                                 Ksh{{number_format($client->basic_premium)}}
                             </td>
-                            <td class="px-6 py-4">
+                            <td>
                                 Ksh{{number_format($client->annual_total_premium)}}
                             </td>
 
 
-                            <td class="px-6 py-4">
+                            <td>
                                 <p class="font-medium text-gray-700">{!!date("j<\s\u\p>S</\s\u\p> M y",strtotime($client->annual_expiry_date))!!}</p>
                                 <p class="text-gray-400 text-xs">({!!date("j<\s\u\p>S</\s\u\p> M y",strtotime($client->annual_renewal_date))!!})</p>
 
                             </td>
-                            <td class="px-6 py-4">
+                            <td>
                                 <button title="View Client" wire:click="viewClient({{$client->id}})" class="text-teal-500"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -131,13 +131,13 @@
                         </tr>
                         @endforeach
                         <tr>
-                            <td class="px-6 py-4" colspan="6">
+                            <td class="" colspan="10">
                                 {{ $clients->links() }}
                             </td>
                         </tr>
                         @else
                         <tr>
-                            <td class="px-6 py-4" colspan="6" align="center">
+                            <td class="" colspan="10">
                                 No clients Found.
                             </td>
                         </tr>
