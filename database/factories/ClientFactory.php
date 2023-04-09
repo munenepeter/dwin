@@ -28,7 +28,7 @@ class ClientFactory extends Factory
         return [
             'full_names' => $this->faker->name(),
             'policy_number' => $this->faker->randomNumber(7, true),
-            'underwriter_id' => $this->faker->numberBetween(1, 2),
+            'underwriter_id' => $this->faker->numberBetween(1, 6),
             'insurance_id' => $this->faker->numberBetween(1, 2),
             'risk_id' => $this->faker->numerify('D-#######'),
             'sum_insured' => $this->faker->numberBetween(1000, 1000000),
