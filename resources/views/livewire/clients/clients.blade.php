@@ -20,7 +20,7 @@
         @endif
     </div>
     <div class="col-md-8">
-        <div class="p-4">
+        <div class="p-2">
             <div class="flex justify-end mb-2">
                 @if(!$addClient)
                 <x-jet-button wire:click="newReport()" class="mr-4 bg-rose-500">
@@ -53,7 +53,6 @@
                             <th scope="col">
                                 Sum Insured
                             </th>
-
                             <th scope="col">
                                 Political Risk
                             </th>
@@ -64,7 +63,7 @@
                                 Basic Premium
                             </th>
                             <th scope="col">
-                                Annual Total Premium
+                                Total Premium
                             </th>
                             <th scope="col">
                                 Annual Dates
@@ -78,11 +77,11 @@
                         @if (!empty($clients))
                         @foreach ($clients as $client)
                         <tr class="bg-white border-b space-y-2">
-                            <th scope="row" class="px-2 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <th scope="row" class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 <p class="font-medium text-gray-700">{{$client->full_names}}</p>
                             </th>
                             <td>
-                                <p class="font-medium text-gray-700">{{ucfirst($client->underwriter->name)}}</p>
+                                <p class="font-medium text-gray-700">{{ (strlen($client->underwriter->name)<=3)? strtoupper($client->underwriter->name) : ucfirst($client->underwriter->name)}}</p>
                             </td>
                             <td>
                                 {{$client->policy_number}}
@@ -131,13 +130,13 @@
                         </tr>
                         @endforeach
                         <tr>
-                            <td class="" colspan="10">
+                            <td class="font-semibold" colspan="11">
                                 {{ $clients->links() }}
                             </td>
                         </tr>
                         @else
                         <tr>
-                            <td class="" colspan="10">
+                            <td class="" colspan="11">
                                 No clients Found.
                             </td>
                         </tr>
