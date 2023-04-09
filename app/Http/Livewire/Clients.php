@@ -63,7 +63,7 @@ class Clients extends Component {
         $this->insurance_types = Insurance::all();;
         $this->underwriters = Underwriter::all();
         return view('livewire.clients.clients', [
-            'clients' => Client::latest()->paginate(5),
+            'clients' => Client::latest()->paginate(10),
         ]);
     }
  /**
