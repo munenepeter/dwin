@@ -84,10 +84,10 @@
                                 <p class="font-medium text-gray-700">{{ (strlen($client->underwriter->name)<=3)? strtoupper($client->underwriter->name) : ucfirst($client->underwriter->name)}}</p>
                             </td>
                             <td>
-                                {{$client->policy_number}}
+                                {{strtoupper($client->policy_number)}}
                             </td>
                             <td>
-                                {{$client->risk_id}}
+                                {{strtoupper($client->risk_id)}}
                             </td>
                             <td>
                                 Ksh{{number_format($client->sum_insured)}}

@@ -99,7 +99,31 @@
                 </div>
               
             </div>
-         
+            <div class="grid gap-2 mb-4 md:grid-cols-3">
+                <div>
+                    <x-jet-label for="annual_renewal_date_range" value="{{ __('Renewal Date Range') }}" />
+                    <select id="annual_renewal_date_range" wire:model="annual_renewal_date_range" required autofocus class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                        <option value="all">All</option>
+                        <option value="today">Today</option>
+                        <option value="this_week">This Week</option>
+                        <option value="this_month">This Month</option>
+                        <option value="this_quarter">This Quarter</option>
+                        <option value="this_year">This Year</option>
+                        <option value="last_week">Last Week</option>
+                        <option value="last_30_days">Last 30 Days</option>
+                        <option value="custom">Custom</option>
+                    </select>
+                </div>
+                <div>
+                    <x-jet-label for="renewal_from" value="{{ __('Updated From') }}" />
+                    <x-jet-input id="renewal_from" wire:model="renewal_from" class="block mt-1 w-full" type="date" name="renewal_from" :value="old('renewal_from')" required autofocus />
+                </div>
+                <div>
+                    <x-jet-label for="renewal_to" value="{{ __('Updated To') }}" />
+                    <x-jet-input id="renewal_to" wire:model="renewal_to" class="block mt-1 w-full" type="date" name="renewal_to" :value="old('renewal_to')" required autofocus />
+                </div>
+
+            </div>
        
             <div class="grid gap-4 mb-4 sm:grid-cols-2">
                 <div>
@@ -131,16 +155,6 @@
                     </select>
                 </div>
 
-            </div>
-            <div class="grid gap-4 mb-4 sm:grid-cols-2">
-                <div>
-                    <x-jet-label for="update_date_range" value="{{ __('Annual Expiry Date') }}" />
-                    <x-jet-input id="update_date_range" wire:model="update_date_range" placeholder="Enter the risk_id number" class="block mt-1 w-full" type="date" name="update_date_range" :value="old('update_date_range')" required autofocus />
-                </div>
-                <div>
-                    <x-jet-label for="sum_insured" value="{{ __('Sum Insured') }}" />
-                    <x-jet-input id="sum_insured" wire:model="sum_insured" placeholder="KshXXX XXX" class="block mt-1 w-full" type="text" pattern="[0-9]{9}" name="sum_insured" :value="old('sum_insured')" required autofocus />
-                </div>
             </div>
         </form>
     </x-slot>

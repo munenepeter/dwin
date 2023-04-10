@@ -30,7 +30,7 @@ class ClientFactory extends Factory
             'policy_number' => $this->faker->randomNumber(7, true),
             'underwriter_id' => $this->faker->numberBetween(1, 6),
             'insurance_id' => $this->faker->numberBetween(1, 2),
-            'risk_id' => $this->faker->numerify('D-#######'),
+            'risk_id' => $this->faker->numerify('K'.$this->faker->randomElement(['a','b','c','d']).$this->faker->randomElement(['a','d','o','p']).'-###'.$this->faker->randomElement(['m','n','s'])),
             'sum_insured' => $this->faker->numberBetween(1000, 1000000),
             'political_risk' => $pl,
             'excess_protector' => $ep,
