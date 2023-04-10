@@ -24,38 +24,86 @@
 
     <x-slot name="content">
         <form>
-            <div class="grid gap-4 mb-4 sm:grid-cols-2">
+            <div class="grid gap-2 mb-4 md:grid-cols-3">
                 <div>
-                    <x-jet-label for="policy_number" value="{{ __('Policy Number') }}" />
-                    <x-jet-input id="policy_number" wire:model="policy_number" placeholder="XXX XXX XXX" class="block mt-1 w-full" type="text" pattern="[0-9]{5}" name="policy_number" :value="old('policy_number')" required autofocus />
+                    <x-jet-label for="update_date_range" value="{{ __('Update Date Range') }}" />
+                    <select id="update_date_range" wire:model="update_date_range" required autofocus class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                        <option value="all">All</option>
+                        <option value="today">Today</option>
+                        <option value="this_week">This Week</option>
+                        <option value="this_month">This Month</option>
+                        <option value="this_quarter">This Quarter</option>
+                        <option value="this_year">This Year</option>
+                        <option value="last_week">Last Week</option>
+                        <option value="last_30_days">Last 30 Days</option>
+                      
+                    </select>
+                </div>
+                <div>
+                    <x-jet-label for="updated_from" value="{{ __('Updated From') }}" />
+                    <x-jet-input id="updated_from" wire:model="updated_from" class="block mt-1 w-full" type="date" name="updated_from" :value="old('updated_from')" required autofocus />
+                </div>
+                <div>
+                    <x-jet-label for="updated_to" value="{{ __('Updated To') }}" />
+                    <x-jet-input id="updated_to" wire:model="updated_to" class="block mt-1 w-full" type="date" name="updated_to" :value="old('updated_to')" required autofocus />
                 </div>
 
             </div>
-            <div class="grid gap-4 mb-4 sm:grid-cols-2">
-                <div>
-                    <x-jet-label for="basic_premium" value="{{ __('Basic Premium') }}" />
-                    <x-jet-input id="basic_premium" wire:model="basic_premium" placeholder="KshXXX XXX" class="block mt-1 w-full" type="text" pattern="[0-9]{5}" name="basic_premium" :value="old('basic_premium')" required autofocus />
+            <div class="grid gap-2 mb-4 md:grid-cols-3">
+            <div>
+                    <x-jet-label for="basic_premium_range" value="{{ __('Basic Premium Range') }}" />
+                    <select id="basic_premium_range" wire:model="basic_premium_range" required autofocus class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                        <option value="all">All</option>
+                        <option value="<2k">Less Than 2k</option>
+                        <option value="<5k">Less Than 5k</option>
+                        <option value=">5k">More Than 5k</option>
+                        <option value=">10k">More Than 10k</option>
+                        <option value="<50k">Less Than 50k</option>
+                        <option value=">50k">More Than 50k</option>
+                      
+                    </select>
                 </div>
                 <div>
-                    <x-jet-label for="excess_protector" value="{{ __('Excess Protector') }}" />
-                    <x-jet-input id="excess_protector" wire:model="excess_protector" placeholder="KshXXX XXX" class="block mt-1 w-full" type="text" pattern="[0-9]{9}" name="excess_protector" :value="old('excess_protector')" required autofocus />
+                    <x-jet-label for="basic_premium_from" value="{{ __('Basic Premium From') }}" />
+                    <x-jet-input id="basic_premium_from" wire:model="basic_premium_from" placeholder="KshXXX XXX" class="block mt-1 w-full" type="text" pattern="[0-9]{5}" name="basic_premium_from" :value="old('basic_premium_from')" required autofocus />
                 </div>
+                <div>
+                    <x-jet-label for="basic_premium_to" value="{{ __('Basic Premium To') }}" />
+                    <x-jet-input id="basic_premium_to" wire:model="basic_premium_to" placeholder="KshXXX XXX" class="block mt-1 w-full" type="text" pattern="[0-9]{5}" name="basic_premium_to" :value="old('basic_premium_from')" required autofocus />
+                </div>
+              
             </div>
-            <div class="grid gap-4 mb-4 sm:grid-cols-2">
-                <div>
-                    <x-jet-label for="political_risk" value="{{ __('Political Risk') }}" />
-                    <x-jet-input id="political_risk" wire:model="political_risk" placeholder="KshXXX XXX" class="block mt-1 w-full" type="text" pattern="[0-9]{5}" name="political_risk" :value="old('political_risk')" required autofocus />
+            <div class="grid gap-2 mb-4 md:grid-cols-3">
+            <div>
+                    <x-jet-label for="sum_insured_range" value="{{ __('Sum Insured Range') }}" />
+                    <select id="sum_insured_range" wire:model="sum_insured_range" required autofocus class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                        <option value="all">All</option>
+                        <option value="<2k">Less Than 2k</option>
+                        <option value="<5k">Less Than 5k</option>
+                        <option value=">5k">More Than 5k</option>
+                        <option value=">10k">More Than 10k</option>
+                        <option value="<50k">Less Than 50k</option>
+                        <option value=">50k">More Than 50k</option>
+                      
+                    </select>
                 </div>
                 <div>
-                    <x-jet-label for="risk_id" value="{{ __('Risk ID') }}" />
-                    <x-jet-input id="risk_id" wire:model="risk_id" placeholder="XXX XXX XXX" class="block mt-1 w-full" type="text" pattern="[0-9]{9}" name="risk_id" :value="old('risk_id')" required autofocus />
+                    <x-jet-label for="sum_insured_from" value="{{ __('Basic Premium From') }}" />
+                    <x-jet-input id="sum_insured_from" wire:model="basic_premium_from" placeholder="KshXXX XXX" class="block mt-1 w-full" type="text" pattern="[0-9]{5}" name="sum_insured_from" :value="old('sum_insured_from')" required autofocus />
                 </div>
+                <div>
+                    <x-jet-label for="sum_insured_to" value="{{ __('Basic Premium To') }}" />
+                    <x-jet-input id="sum_insured_to" wire:model="sum_insured_to" placeholder="KshXXX XXX" class="block mt-1 w-full" type="text" pattern="[0-9]{5}" name="sum_insured_to" :value="old('sum_insured_from')" required autofocus />
+                </div>
+              
             </div>
+         
+       
             <div class="grid gap-4 mb-4 sm:grid-cols-2">
                 <div>
 
                     <x-jet-label for="insurance" value="{{ __('Class of Insurance') }}" />
-                    <select id="insurance" wire:model="insurance" required autofocus class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <select id="insurance" wire:model="insurance" required autofocus class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         <option>Choose class of insurance</option>
                         @if (count($insurance_types) > 0)
                         @foreach ($insurance_types as $insurance)
@@ -69,7 +117,7 @@
                 </div>
                 <div>
                     <x-jet-label for="underwriter" value="{{ __('Underwriter') }}" />
-                    <select id="underwriter" wire:model="underwriter" required autofocus class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <select id="underwriter" wire:model="underwriter" required autofocus class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         <option>Choose a underwriter</option>
                         @if (count($underwriters) > 0)
                         @foreach ($underwriters as $underwriter)
@@ -84,8 +132,8 @@
             </div>
             <div class="grid gap-4 mb-4 sm:grid-cols-2">
                 <div>
-                    <x-jet-label for="annual_expiry_date" value="{{ __('Annual Expiry Date') }}" />
-                    <x-jet-input id="annual_expiry_date" wire:model="annual_expiry_date" placeholder="Enter the risk_id number" class="block mt-1 w-full" type="date" name="annual_expiry_date" :value="old('annual_expiry_date')" required autofocus />
+                    <x-jet-label for="update_date_range" value="{{ __('Annual Expiry Date') }}" />
+                    <x-jet-input id="update_date_range" wire:model="update_date_range" placeholder="Enter the risk_id number" class="block mt-1 w-full" type="date" name="update_date_range" :value="old('update_date_range')" required autofocus />
                 </div>
                 <div>
                     <x-jet-label for="sum_insured" value="{{ __('Sum Insured') }}" />
