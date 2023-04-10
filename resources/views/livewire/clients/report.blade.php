@@ -50,7 +50,7 @@
 
             </div>
             <div class="grid gap-2 mb-4 md:grid-cols-3">
-            <div>
+                <div>
                     <x-jet-label for="basic_premium_range" value="{{ __('Basic Premium Range') }}" />
                     <select id="basic_premium_range" wire:model="basic_premium_range" required autofocus class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         <option value="all">All</option>
@@ -72,10 +72,10 @@
                     <x-jet-label for="basic_premium_to" value="{{ __('Basic Premium To') }}" />
                     <x-jet-input id="basic_premium_to" wire:model="basic_premium_to" placeholder="KshXXX XXX" class="block mt-1 w-full" type="text" pattern="[0-9]{5}" name="basic_premium_to" :value="old('basic_premium_from')" required autofocus />
                 </div>
-              
+
             </div>
             <div class="grid gap-2 mb-4 md:grid-cols-3">
-            <div>
+                <div>
                     <x-jet-label for="sum_insured_range" value="{{ __('Sum Insured Range') }}" />
                     <select id="sum_insured_range" wire:model="sum_insured_range" required autofocus class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         <option value="all">All</option>
@@ -86,7 +86,7 @@
                         <option value="<50k">Less Than 50k</option>
                         <option value=">50k">More Than 50k</option>
                         <option value="custom">Custom</option>
-                      
+
                     </select>
                 </div>
                 <div>
@@ -97,11 +97,11 @@
                     <x-jet-label for="sum_insured_to" value="{{ __('Sum Insured To') }}" />
                     <x-jet-input id="sum_insured_to" wire:model="sum_insured_to" placeholder="KshXXX XXX" class="block mt-1 w-full" type="text" pattern="[0-9]{5}" name="sum_insured_to" :value="old('sum_insured_from')" required autofocus />
                 </div>
-              
+
             </div>
             <div class="grid gap-2 mb-4 md:grid-cols-3">
                 <div>
-                    <x-jet-label for="annual_renewal_date_range" value="{{ __('Renewal Date Range') }}" />
+                    <x-jet-label for="annual_renewal_date_range" value="{{ __('Annual Expiry Date Range') }}" />
                     <select id="annual_renewal_date_range" wire:model="annual_renewal_date_range" required autofocus class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         <option value="all">All</option>
                         <option value="today">Today</option>
@@ -115,22 +115,22 @@
                     </select>
                 </div>
                 <div>
-                    <x-jet-label for="renewal_from" value="{{ __('Updated From') }}" />
-                    <x-jet-input id="renewal_from" wire:model="renewal_from" class="block mt-1 w-full" type="date" name="renewal_from" :value="old('renewal_from')" required autofocus />
+                    <x-jet-label for="expiry_from" value="{{ __('Annual Expiry Date From') }}" />
+                    <x-jet-input id="expiry_from" wire:model="expiry_from" class="block mt-1 w-full" type="date" name="renewal_from" :value="old('renewal_from')" required autofocus />
                 </div>
                 <div>
-                    <x-jet-label for="renewal_to" value="{{ __('Updated To') }}" />
-                    <x-jet-input id="renewal_to" wire:model="renewal_to" class="block mt-1 w-full" type="date" name="renewal_to" :value="old('renewal_to')" required autofocus />
+                    <x-jet-label for="expiry_to" value="{{ __('Annual Expiry Date To') }}" />
+                    <x-jet-input id="expiry_to" wire:model="expiry_to" class="block mt-1 w-full" type="date" name="renewal_to" :value="old('renewal_to')" required autofocus />
                 </div>
 
             </div>
-       
+
             <div class="grid gap-4 mb-4 sm:grid-cols-2">
                 <div>
 
                     <x-jet-label for="insurance" value="{{ __('Class of Insurance') }}" />
                     <select id="insurance" wire:model="insurance" required autofocus class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                        <option>Choose class of insurance</option>
+                        <option value="all">All</option>
                         @if (count($insurance_types) > 0)
                         @foreach ($insurance_types as $insurance)
                         <option value="{{ $insurance->id }}"> {{ ucfirst($insurance->name) }}</option>
@@ -144,7 +144,7 @@
                 <div>
                     <x-jet-label for="underwriter" value="{{ __('Underwriter') }}" />
                     <select id="underwriter" wire:model="underwriter" required autofocus class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                        <option>Choose a underwriter</option>
+                        <option value="all">All</option>
                         @if (count($underwriters) > 0)
                         @foreach ($underwriters as $underwriter)
                         <option value="{{ $underwriter->id }}"> {{ ucfirst($underwriter->name) }}</option>
@@ -159,16 +159,16 @@
         </form>
     </x-slot>
 
-    <x-slot name="footer" class="space-x-2">
+    <x-slot name="footer" class="space-x-4">
         <x-jet-secondary-button wire:click="$toggle('newReport')" wire:loading.attr="disabled">
             Close
         </x-jet-secondary-button>
-        <x-jet-secondary-button wire:click="$toggle('newReport')" wire:loading.attr="disabled">
-            Save
-        </x-jet-secondary-button>
-        <x-jet-secondary-button wire:click="$toggle('newReport')" wire:loading.attr="disabled">
+        <x-jet-button class="mx-2" wire:click="$toggle('newReport')" wire:loading.attr="disabled">
+            View
+        </x-jet-button>
+        <x-jet-button class="bg-green-500" wire:click="$toggle('newReport')" wire:loading.attr="disabled">
             Print
-        </x-jet-secondary-button>
+        </x-jet-button>
 
     </x-slot>
 </x-jet-dialog-modal>

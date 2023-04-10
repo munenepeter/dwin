@@ -15,8 +15,8 @@ return new class extends Migration {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
             $table->string('full_names');
-            $table->unsignedInteger('policy_number');
-            $table->unsignedInteger('risk_id');
+            $table->string('policy_number');
+            $table->string('risk_id');
             $table->unsignedInteger('insurance_id');
             $table->foreign('insurance_id')->references('id')->on('insurances');
             $table->unsignedInteger('underwriter_id');
