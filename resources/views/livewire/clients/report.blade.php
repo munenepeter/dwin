@@ -36,7 +36,7 @@
                         <option value="this_year">This Year</option>
                         <option value="last_week">Last Week</option>
                         <option value="last_30_days">Last 30 Days</option>
-                      
+                        <option value="custom">Custom</option>
                     </select>
                 </div>
                 <div>
@@ -60,7 +60,8 @@
                         <option value=">10k">More Than 10k</option>
                         <option value="<50k">Less Than 50k</option>
                         <option value=">50k">More Than 50k</option>
-                      
+                        <option value="custom">Custom</option>
+
                     </select>
                 </div>
                 <div>
@@ -84,15 +85,16 @@
                         <option value=">10k">More Than 10k</option>
                         <option value="<50k">Less Than 50k</option>
                         <option value=">50k">More Than 50k</option>
+                        <option value="custom">Custom</option>
                       
                     </select>
                 </div>
                 <div>
-                    <x-jet-label for="sum_insured_from" value="{{ __('Basic Premium From') }}" />
+                    <x-jet-label for="sum_insured_from" value="{{ __('Sum Insured From') }}" />
                     <x-jet-input id="sum_insured_from" wire:model="basic_premium_from" placeholder="KshXXX XXX" class="block mt-1 w-full" type="text" pattern="[0-9]{5}" name="sum_insured_from" :value="old('sum_insured_from')" required autofocus />
                 </div>
                 <div>
-                    <x-jet-label for="sum_insured_to" value="{{ __('Basic Premium To') }}" />
+                    <x-jet-label for="sum_insured_to" value="{{ __('Sum Insured To') }}" />
                     <x-jet-input id="sum_insured_to" wire:model="sum_insured_to" placeholder="KshXXX XXX" class="block mt-1 w-full" type="text" pattern="[0-9]{5}" name="sum_insured_to" :value="old('sum_insured_from')" required autofocus />
                 </div>
               
