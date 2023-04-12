@@ -36,8 +36,8 @@
             </div>
             <div class="relative overflow-x-auto">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr class="space-x-2">
+                    <thead class=" text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+                        <tr class="py-4 space-x-2">
                             <th scope="col">
                                 Names
                             </th>
@@ -129,14 +129,14 @@
                             </td>
                         </tr>
                         @endforeach
-                        <tr>
+                        <tr class="p-2 bg-gray-100">
                             <td class="font-semibold" colspan="11">
                                 {{ $clients->links() }}
                             </td>
                         </tr>
                         @else
                         <tr>
-                            <td class="" colspan="11">
+                            <td class="bg-gray-100" colspan="11">
                                 No clients Found.
                             </td>
                         </tr>
