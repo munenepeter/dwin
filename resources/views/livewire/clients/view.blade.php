@@ -23,8 +23,27 @@
     </x-slot>
 
     <x-slot name="content">
-     {{$name}}
-     {{$email}}
+     <div class="bg-orange-300 p-1">
+        <span>Policy Details</span>
+     </div>
+     <div class="p-1 my-2 flex justify-between items-center">
+        <p>Policy No: <span class="text-gray-500 text-sm">0024445</span></p>
+        <p>Underwriter: <span class="text-gray-500 text-sm">Jubilee</span></p>
+        <p>Total Premium: <span class="text-gray-500 text-sm">50,152</span></p>
+     </div>
+     <div class="p-1 my-2 flex justify-between items-center">
+        <p>Expiry Date: <span class="text-gray-500 text-sm">{{now()}}</span></p>
+        <p>Renewal Date: <span class="text-gray-500 text-sm">Jubilee</span></p>
+     </div>
+     <div class="bg-orange-300 p-1">
+        <span>General Information</span>
+     </div>
+     <div class="p-1 mt-2 flex justify-between items-center">
+        <p>Names: <span class="text-gray-500 text-sm">Peter Munene</span></p>
+        <p>Email: <span class="text-gray-500 text-sm">peter@chungu.co.ke</span></p>
+        <p>Risk ID: <span class="text-gray-500 text-sm">KBC 529P</span></p>
+        
+     </div>
     </x-slot>
 
     <x-slot name="footer">

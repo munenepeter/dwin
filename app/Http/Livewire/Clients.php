@@ -184,14 +184,10 @@ class Clients extends Component {
             if (!$client) {
                 session()->flash('error', 'Client not found');
             } else {
-                // $this->name = $client->full_names;
-                // $this->email = $client->email;
-                // $this->phone = $client->phone;
-                // $this->notes = $client->notes;
-                // $this->clientId = $client->id;
-                // $this->updateClient = false;
-                // $this->addClient = false;
-                // $this->viewClient = true;
+               
+                $this->updateClient = false;
+                $this->addClient = false;
+                $this->viewClient = true;
             }
         } catch (\Exception $ex) {
             session()->flash('error', 'Something goes wrong!!');
