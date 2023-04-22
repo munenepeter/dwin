@@ -1196,6 +1196,12 @@ video {
 .min-w-0 {
   min-width: 0px;
 }
+.min-w-\[8\.5rem\] {
+  min-width: 8.5rem;
+}
+.min-w-\[7\.5rem\] {
+  min-width: 7.5rem;
+}
 .max-w-screen-xl {
   max-width: 1280px;
 }
@@ -1871,6 +1877,9 @@ video {
 .pl-\[6px\] {
   padding-left: 6px;
 }
+.pl-\[4px\] {
+  padding-left: 4px;
+}
 .text-left {
   text-align: left;
 }
@@ -2083,6 +2092,10 @@ video {
 .text-red-800 {
   --tw-text-opacity: 1;
   color: rgb(153 27 27 / var(--tw-text-opacity));
+}
+.text-blue-500 {
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity));
 }
 .underline {
   text-decoration-line: underline;
