@@ -3,11 +3,13 @@
 namespace App\Http\Livewire;
 
 use App\Models\Client;
+use App\Models\Insurance;
+use App\Models\Underwriter;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use PowerComponents\LivewirePowerGrid\Filters\Filter;
 use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\{ActionButton, WithExport};
-use PowerComponents\LivewirePowerGrid\Filters\Filter;
 use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
 
 final class ClientTable extends PowerGridComponent {
@@ -51,9 +53,9 @@ final class ClientTable extends PowerGridComponent {
      */
     public function datasource(): Builder {
         return Client::query()->with('underwriter')
-                              ->with('insurance');
-       // return Client::query()->join('underwriters', 'clients.underwriter_id', '=', 'underwriters.id')
-                            //  ->select('clients.*', 'underwriters.name as underwiter');
+            ->with('insurance');
+        // return Client::query()->join('underwriters', 'clients.underwriter_id', '=', 'underwriters.id')
+        //  ->select('clients.*', 'underwriters.name as underwiter');
     }
 
     /*
@@ -89,9 +91,9 @@ final class ClientTable extends PowerGridComponent {
             // ->addColumn('id')
             ->addColumn('full_names')
             ->addColumn('policy_number')
-            ->addColumn( 'risk_id', fn (Client $model) => strtoupper(e($model->risk_id)))
+            ->addColumn('risk_id', fn (Client $model) => strtoupper(e($model->risk_id)))
             ->addColumn('insurance.name', fn (Client $model) => ucfirst($model->insurance->name))
-            ->addColumn('underwriter.name', fn (Client $model) => (strlen($model->underwriter->name)<=3)? strtoupper($model->underwriter->name) : ucfirst($model->underwriter->name))
+            ->addColumn('underwriter.name', fn (Client $model) => (strlen($model->underwriter->name) <= 3) ? strtoupper($model->underwriter->name) : ucfirst($model->underwriter->name))
             ->addColumn('sum_insured', fn (Client $model) => 'Ksh ' . number_format(e($model->sum_insured)))
             ->addColumn('political_risk', fn (Client $model) => 'Ksh ' . number_format(e($model->political_risk)))
             ->addColumn('excess_protector', fn (Client $model) => 'Ksh ' . number_format(e($model->excess_protector)))
@@ -131,8 +133,14 @@ final class ClientTable extends PowerGridComponent {
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Insurance', 'insurance.name'),
-            Column::make('Underwriter', 'underwriter.name'),
+            Column::make('Insurance', 'insurance.name')
+                ->sortable()
+                ->searchable(),
+
+            Column::make('Underwriter', 'underwriter.name')
+                ->sortable()
+                ->searchable(),
+
             Column::make('Sum insured', 'sum_insured')
                 ->sortable()
                 ->searchable(),
@@ -175,6 +183,14 @@ final class ClientTable extends PowerGridComponent {
             Filter::inputText('full_names')->operators(['contains']),
             Filter::inputText('policy_number')->operators(['contains']),
             Filter::inputText('risk_id')->operators(['contains']),
+            Filter::multiSelect('insurance.name', 'insurance_id')
+                ->dataSource(Insurance::all())
+                ->optionValue('id')
+                ->optionLabel('name'),
+            Filter::multiSelect('underwriter.name', 'underwriter_id')
+                ->dataSource(Underwriter::all())
+                ->optionValue('id')
+                ->optionLabel('name'),
             Filter::datepicker('annual_expiry_date'),
             Filter::datepicker('annual_renewal_date'),
             Filter::datetimepicker('created_at'),
