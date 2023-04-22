@@ -189,8 +189,8 @@ final class ClientTable extends PowerGridComponent {
                 ->optionLabel('name'),
             Filter::multiSelect('underwriter.name', 'underwriter_id')
                 ->dataSource(Underwriter::all())
-                ->optionValue('id')
-                ->optionLabel('name'),
+                ->optionValue('underwriter_id')
+                ->optionLabel('underwriter.name'),
             Filter::datepicker('annual_expiry_date'),
             Filter::datepicker('annual_renewal_date'),
             Filter::datetimepicker('created_at'),
