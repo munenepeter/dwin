@@ -1,4 +1,4 @@
-<div>
+<div class="text-sm">
 <div class="col-md-8 mb-2">
         @if(session()->has('success'))
         {{ session()->get('success') }}

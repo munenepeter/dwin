@@ -16,13 +16,13 @@ final class ClientTable extends PowerGridComponent {
     use ActionButton;
     use WithExport;
 
-    /*
-    |--------------------------------------------------------------------------
-    |  Features Setup
-    |--------------------------------------------------------------------------
-    | Setup Table's general features
-    |
-    */
+    //Custom per page
+    public int $perPage = 5;
+
+    //Custom per page values
+    public array $perPageValues = [0, 5, 10, 20, 50];
+
+
     public function setUp(): array {
         $this->showCheckBox();
 
@@ -33,7 +33,7 @@ final class ClientTable extends PowerGridComponent {
             Header::make()->showSearchInput()
                 ->showToggleColumns(),
             Footer::make()
-                ->showPerPage()
+                ->showPerPage($this->perPage, $this->perPageValues)
                 ->showRecordCount('short'),
         ];
     }
