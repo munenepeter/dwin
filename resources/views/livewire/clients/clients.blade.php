@@ -1,5 +1,8 @@
 <div>
-    <div class="col-md-8 mb-2">
+
+<livewire:client-table/>
+
+    {{-- <div class="col-md-8 mb-2">
         @if(session()->has('success'))
         {{ session()->get('success') }}
         @endif
@@ -35,6 +38,7 @@
 
             </div>
             <div class="relative overflow-x-auto">
+              
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class=" text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
                         <tr class="py-4 space-x-2">
@@ -147,6 +151,6 @@
             </div>
 
         </div>
-    </div>
+    </div> --}}
 
 </div>

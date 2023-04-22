@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -11,11 +12,19 @@ module.exports = {
 
     theme: {
         extend: {
+            colors: {
+                'pg-primary': colors.slate,
+                'pg-secondary': colors.blue,
+            },
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
         },
     },
-
-    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+    plugins: [
+        require("@tailwindcss/forms")({
+            strategy: 'class',
+        }), require('@tailwindcss/typography')
+    ]
+    //plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };
