@@ -10,8 +10,7 @@ use PowerComponents\LivewirePowerGrid\Traits\{ActionButton, WithExport};
 use PowerComponents\LivewirePowerGrid\Filters\Filter;
 use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
 
-final class ClientTable extends PowerGridComponent
-{
+final class ClientTable extends PowerGridComponent {
     use ActionButton;
     use WithExport;
 
@@ -22,8 +21,7 @@ final class ClientTable extends PowerGridComponent
     | Setup Table's general features
     |
     */
-    public function setUp(): array
-    {
+    public function setUp(): array {
         $this->showCheckBox();
 
         return [
@@ -31,7 +29,7 @@ final class ClientTable extends PowerGridComponent
                 ->striped()
                 ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
             Header::make()->showSearchInput()
-                          ->showToggleColumns(),
+                ->showToggleColumns(),
             Footer::make()
                 ->showPerPage()
                 ->showRecordCount('short'),
@@ -51,9 +49,11 @@ final class ClientTable extends PowerGridComponent
      *
      * @return Builder<\App\Models\Client>
      */
-    public function datasource(): Builder
-    {
-        return Client::query();
+    public function datasource(): Builder {
+        return Client::query()->with('underwriter')
+                              ->with('insurance');
+       // return Client::query()->join('underwriters', 'clients.underwriter_id', '=', 'underwriters.id')
+                            //  ->select('clients.*', 'underwriters.name as underwiter');
     }
 
     /*
@@ -69,8 +69,7 @@ final class ClientTable extends PowerGridComponent
      *
      * @return array<string, array<int, string>>
      */
-    public function relationSearch(): array
-    {
+    public function relationSearch(): array {
         return [];
     }
 
@@ -85,20 +84,19 @@ final class ClientTable extends PowerGridComponent
     |    the database using the `e()` Laravel Helper function.
     |
     */
-    public function addColumns(): PowerGridEloquent
-    {
+    public function addColumns(): PowerGridEloquent {
         return PowerGrid::eloquent()
-            ->addColumn('id')
+            // ->addColumn('id')
             ->addColumn('full_names')
             ->addColumn('policy_number')
-            ->addColumn('risk_id')
-            ->addColumn('insurance_id')
-            ->addColumn('underwriter_id')
-            ->addColumn('sum_insured')
-            ->addColumn('political_risk')
-            ->addColumn('excess_protector')
-            ->addColumn('basic_premium')
-            ->addColumn('annual_total_premium')
+            ->addColumn( 'risk_id', fn (Client $model) => strtoupper(e($model->risk_id)))
+            ->addColumn('insurance.name')
+            ->addColumn('underwriter.name')
+            ->addColumn('sum_insured', fn (Client $model) => 'Ksh ' . number_format(e($model->sum_insured)))
+            ->addColumn('political_risk', fn (Client $model) => 'Ksh ' . number_format(e($model->political_risk)))
+            ->addColumn('excess_protector', fn (Client $model) => 'Ksh ' . number_format(e($model->excess_protector)))
+            ->addColumn('basic_premium', fn (Client $model) => 'Ksh ' . number_format(e($model->basic_premium)))
+            ->addColumn('annual_total_premium', fn (Client $model) => 'Ksh ' . number_format(e($model->annual_total_premium)))
             ->addColumn('annual_expiry_date_formatted', fn (Client $model) => Carbon::parse($model->annual_expiry_date)->format('d/m/Y'))
             ->addColumn('annual_renewal_date_formatted', fn (Client $model) => Carbon::parse($model->annual_renewal_date)->format('d/m/Y'))
             ->addColumn('updated_at_formatted', fn (Client $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
@@ -113,15 +111,14 @@ final class ClientTable extends PowerGridComponent
     |
     */
 
-     /**
-      * PowerGrid Columns.
-      *
-      * @return array<int, Column>
-      */
-    public function columns(): array
-    {
+    /**
+     * PowerGrid Columns.
+     *
+     * @return array<int, Column>
+     */
+    public function columns(): array {
         return [
-            Column::make('Id', 'id'),
+            //Column::make('Id', 'id'),
             Column::make('Full names', 'full_names')
                 ->sortable()
                 ->searchable(),
@@ -134,17 +131,17 @@ final class ClientTable extends PowerGridComponent
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Insurance id', 'insurance_id'),
-            Column::make('Underwriter id', 'underwriter_id'),
+            Column::make('Insurance', 'insurance.name'),
+            Column::make('Underwriter', 'underwriter.name'),
             Column::make('Sum insured', 'sum_insured')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Political risk', 'political_risk')
+            Column::make('Pol\' risk', 'political_risk')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Excess protector', 'excess_protector')
+            Column::make('Excess pro\'', 'excess_protector')
                 ->sortable()
                 ->searchable(),
 
@@ -173,8 +170,7 @@ final class ClientTable extends PowerGridComponent
      *
      * @return array<int, Filter>
      */
-    public function filters(): array
-    {
+    public function filters(): array {
         return [
             Filter::inputText('full_names')->operators(['contains']),
             Filter::inputText('policy_number')->operators(['contains']),
