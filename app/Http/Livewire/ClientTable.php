@@ -183,14 +183,19 @@ final class ClientTable extends PowerGridComponent {
             Filter::inputText('full_names')->operators(['contains']),
             Filter::inputText('policy_number')->operators(['contains']),
             Filter::inputText('risk_id')->operators(['contains']),
+
             Filter::multiSelect('insurance.name', 'insurance_id')
                 ->dataSource(Insurance::all())
                 ->optionValue('id')
                 ->optionLabel('name'),
+
+
             Filter::multiSelect('underwriter.name', 'underwriter_id')
                 ->dataSource(Underwriter::all())
-                ->optionValue('underwriter_id')
-                ->optionLabel('underwriter.name'),
+                ->optionValue('id')
+                ->optionLabel('name'),
+
+
             Filter::datepicker('annual_expiry_date'),
             Filter::datepicker('annual_renewal_date'),
             Filter::datetimepicker('created_at'),
