@@ -205,7 +205,7 @@ class Clients extends Component {
             Client::destroy($id);
             session()->flash('success', "Client Deleted Successfully!!");
         } catch (\Exception $e) {
-            session()->flash('error', "Something not right!!" . $e->getMessage());
+            session()->flash('error', "Something not right!!");
         }
     }
 
