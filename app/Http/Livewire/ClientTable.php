@@ -6,7 +6,6 @@ use App\Models\Client;
 use App\Models\Insurance;
 use App\Models\Underwriter;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Filters\Filter;
 use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
@@ -18,7 +17,7 @@ final class ClientTable extends PowerGridComponent {
     use WithExport;
 
     //Custom per page
-    public int $perPage = 5;
+    public int $perPage = 6;
 
     //Custom per page values
     public array $perPageValues = [0, 5, 10, 20, 50];
