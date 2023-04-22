@@ -7,10 +7,8 @@ use App\Models\Underwriter;
 use App\Models\Client;
 use App\Models\Insurance;
 use Livewire\Component;
-use Livewire\WithPagination;
 
 class Clients extends Component {
-    use WithPagination;
     public  $underwriters, $insurance_types, $full_names, $policy_number, $risk_id, $sum_insured,
         $political_risk, $excess_protector, $basic_premium, $annual_expiry_date,
         $underwriter, $insurance, $clientId, $newReport = false, $updateClient = false, $addClient = false, $viewClient = false;
@@ -18,7 +16,9 @@ class Clients extends Component {
      * delete action listener
      */
     protected $listeners = [
-        'deleteClientListner' => 'deleteClient'
+        'viewClientListener' => 'viewClient',
+        'updateClientListener' => 'editClient',
+        'deleteClientListener' => 'deleteClient'
     ];
 
     /**
@@ -110,7 +110,7 @@ class Clients extends Component {
             $this->resetFields();
             $this->addClient = false;
         } catch (\Exception $ex) {
-            session()->flash('error', 'Something goes wrong!!');
+            session()->flash('error', 'Something not right!!');
             throw new \Exception($ex);
         }
     }
@@ -135,7 +135,7 @@ class Clients extends Component {
                 // $this->addClient = false;
             }
         } catch (\Exception $ex) {
-            session()->flash('error', 'Something goes wrong!!');
+            session()->flash('error', 'Something not right!!');
         }
     }
 
@@ -159,7 +159,7 @@ class Clients extends Component {
             $this->resetFields();
             $this->updateClient = false;
         } catch (\Exception $ex) {
-            session()->flash('success', 'Something goes wrong!!');
+            session()->flash('success', 'Something not right!!');
         }
     }
 
@@ -184,13 +184,13 @@ class Clients extends Component {
             if (!$client) {
                 session()->flash('error', 'Client not found');
             } else {
-               
+            
                 $this->updateClient = false;
                 $this->addClient = false;
                 $this->viewClient = true;
             }
         } catch (\Exception $ex) {
-            session()->flash('error', 'Something goes wrong!!');
+            session()->flash('error', 'Something not right!!');
         }
     }
 
@@ -200,33 +200,33 @@ class Clients extends Component {
      * @return void
      */
     public function deleteClient($id) {
-
+  
         try {
-            Client::find($id)->delete();
+            Client::destroy($id);
             session()->flash('success', "Client Deleted Successfully!!");
         } catch (\Exception $e) {
-            session()->flash('error', "Something goes wrong!!");
+            session()->flash('error', "Something not right!!" . $e->getMessage());
         }
     }
 
-    public function markPaid($id) {
-        $client = Client::findOrFail($id);
-        $last_start_at = new Carbon($client->plan_end_at);
-        $last_start_at1 = new Carbon($client->plan_end_at);
-        try {
-            Client::whereId($id)->update([
-                'plan_end_at' => $last_start_at->addMonth(),
-                'status' => 'paid',
-            ]);
-            // Payment::create([
-            //     'period' => $last_start_at1->subMonth()->format('jS M Y') . ' - ' . date('jS M Y', strtotime($client->plan_end_at)),
-            //     'amount' => $client->plan->amount,
-            //     'client_id' => $client->id,
-            // ]);
-            session()->flash('success', "Client Updated Successfully!!");
-        } catch (\Exception $e) {
-            throw new \Exception($e);
-            session()->flash('error', "Something goes wrong!!");
-        }
-    }
+    // public function markPaid($id) {
+    //     $client = Client::findOrFail($id);
+    //     $last_start_at = new Carbon($client->plan_end_at);
+    //     $last_start_at1 = new Carbon($client->plan_end_at);
+    //     try {
+    //         Client::whereId($id)->update([
+    //             'plan_end_at' => $last_start_at->addMonth(),
+    //             'status' => 'paid',
+    //         ]);
+    //         // Payment::create([
+    //         //     'period' => $last_start_at1->subMonth()->format('jS M Y') . ' - ' . date('jS M Y', strtotime($client->plan_end_at)),
+    //         //     'amount' => $client->plan->amount,
+    //         //     'client_id' => $client->id,
+    //         // ]);
+    //         session()->flash('success', "Client Updated Successfully!!");
+    //     } catch (\Exception $e) {
+    //         throw new \Exception($e);
+    //         session()->flash('error', "Something not right!!");
+    //     }
+    // }
 }

@@ -1,8 +1,5 @@
 <div>
-
-<livewire:client-table/>
-
-    {{-- <div class="col-md-8 mb-2">
+<div class="col-md-8 mb-2">
         @if(session()->has('success'))
         {{ session()->get('success') }}
         @endif
@@ -22,6 +19,9 @@
         @include('livewire.clients.report')
         @endif
     </div>
+<livewire:client-table/>
+
+    {{-- 
     <div class="col-md-8">
         <div class="p-2">
             <div class="flex justify-end mb-2">

@@ -142,24 +142,20 @@ final class ClientTable extends PowerGridComponent {
                 ->searchable(),
 
             Column::make('Sum insured', 'sum_insured')
-                ->sortable()
-                ->searchable(),
+                ->sortable(),
 
             Column::make('Pol\' risk', 'political_risk')
-                ->sortable()
-                ->searchable(),
+                ->sortable(),
 
             Column::make('Excess pro\'', 'excess_protector')
-                ->sortable()
-                ->searchable(),
+                ->sortable(),
 
             Column::make('Basic premium', 'basic_premium')
                 ->sortable()
                 ->searchable(),
 
             Column::make('Total premium', 'annual_total_premium')
-                ->sortable()
-                ->searchable(),
+                ->sortable(),
 
             Column::make('Expiry date', 'annual_expiry_date_formatted', 'annual_expiry_date')
                 ->sortable(),
@@ -216,25 +212,23 @@ final class ClientTable extends PowerGridComponent {
      * @return array<int, Button>
      */
 
-    /*
-    public function actions(): array
-    {
-       return [
-           Button::make('edit', 'Edit')
-               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('client.edit', function(\App\Models\Client $model) {
-                    return $model->id;
-               }),
 
-           Button::make('destroy', 'Delete')
-               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('client.destroy', function(\App\Models\Client $model) {
-                    return $model->id;
-               })
-               ->method('delete')
+    public function actions(): array {
+        return [
+            Button::make('view', 'View')
+                ->class('bg-green-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
+                ->emitTo('clients', 'viewClientListener', fn (Client $model) => ['id' => $model->id]),
+
+            Button::make('edit', 'Edit')
+                ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
+                ->emitTo('clients','updateClientListener', fn (Client $model) => ['id' => $model->id]),
+
+            Button::make('delete', 'Delete')
+                ->class('bg-red-500 cursor-pointer px-3 py-2 m-1 rounded text-sm')
+                ->emitTo('clients','deleteClientListener', fn (Client $model) => ['id' => $model->id])
         ];
     }
-    */
+
 
     /*
     |--------------------------------------------------------------------------
