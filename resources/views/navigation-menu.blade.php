@@ -18,7 +18,7 @@
                     <x-jet-nav-link href="{{ route('clients') }}" :active="request()->routeIs('clients')">
                         {{ __('Clients') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('plans') }}" :active="request()->routeIs('plans')">
+                    <x-jet-nav-link href="{{ route('underwriters') }}" :active="request()->routeIs('underwriters')">
                         {{ __('Underwriters') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('payments') }}" :active="request()->routeIs('payments')">

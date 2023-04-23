@@ -34,9 +34,9 @@ Route::middleware([
             return view('clients');
         })->name('clients');
 
-        Route::get('/plans', function () {
-            return view('plans');
-        })->name('plans');
+        Route::get('/underwriters', function () {
+            return view('underwriters');
+        })->name('underwriters');
 
         Route::get('/payments', function () {
             return view('payments');
