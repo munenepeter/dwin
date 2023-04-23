@@ -38,8 +38,8 @@ Route::middleware([
             return view('underwriters');
         })->name('underwriters');
 
-        Route::get('/payments', function () {
-            return view('payments');
-        })->name('payments');
+        Route::get('/insurance_types', function () {
+            return view('insurances');
+        })->name('insurances');
     });
 });

@@ -21,7 +21,7 @@
                     <x-jet-nav-link href="{{ route('underwriters') }}" :active="request()->routeIs('underwriters')">
                         {{ __('Underwriters') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('payments') }}" :active="request()->routeIs('payments')">
+                    <x-jet-nav-link href="{{ route('insurances') }}" :active="request()->routeIs('insurances')">
                         {{ __('Insurance Types') }}
                     </x-jet-nav-link>
                 </div>
