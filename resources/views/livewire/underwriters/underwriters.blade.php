@@ -63,7 +63,7 @@
                                     </th>
                                     <td>
                                         <p class="font-medium text-gray-700">
-                                            {{ strlen($underwriter->name) <= 3 ? strtoupper($underwriter->name) : ucfirst($underwriter->name) }}
+                                            {{ strlen($underwriter->name) <= 3 ? strtoupper($underwriter->name) : ucwords($underwriter->name) }}
                                         </p>
                                     </td>
                                     <td>
