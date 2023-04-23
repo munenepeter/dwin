@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Insurances extends Component {
 
-    public $insurances, $name, $insuranceId, $updateInsurance = false, $addInsurance = false,
+    public $name, $insuranceId, $updateInsurance = false, $addInsurance = false,
         $viewInsurance = false;
 
     /**

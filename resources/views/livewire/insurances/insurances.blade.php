@@ -43,7 +43,10 @@
                                 Name
                             </th>                          
                             <th scope="col">
-                                Dates
+                                Created at
+                            </th>
+                            <th scope="col">
+                                Updated at
                             </th>
                             <th scope="col">
                                 Action
@@ -62,7 +65,11 @@
                             </td>
                             <td>
                                 <p class="font-medium text-gray-700">{!!date("j<\s\u\p>S</\s\u\p> M y",strtotime($insurance->created_at))!!}</p>
-                                <p class="text-gray-400 text-xs">({!!date("j<\s\u\p>S</\s\u\p> M y",strtotime($insurance->updated_at))!!})</p>
+
+                            </td>
+                            <td>
+                              
+                                <p class="font-medium text-gray-700">{!!date("j<\s\u\p>S</\s\u\p> M y",strtotime($insurance->updated_at))!!}</p>
 
                             </td>
                             <td>

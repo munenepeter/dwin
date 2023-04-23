@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Underwriters extends Component {
 
-    public $underwriters, $name, $underwriterId, $updateUnderwriter = false, $addUnderwriter = false,
+    public $name, $underwriterId, $updateUnderwriter = false, $addUnderwriter = false,
            $viewUnderwriter = false;
 
     /**
