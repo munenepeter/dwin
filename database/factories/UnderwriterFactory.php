@@ -18,7 +18,7 @@ class UnderwriterFactory extends Factory {
      */
     public function definition() {
         return [
-            'name' => $this->faker->randomElement(['monarch', 'kenya orient', 'uap', 'jubilee', 'cic','madison'])
+            'name' => $this->faker->unique()->randomElement(['monarch', 'kenya orient', 'uap', 'jubilee', 'cic','madison', 'aon', 'allianz', 'sanlam', 'liberty'])
         ];
     }
 }

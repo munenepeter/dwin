@@ -17,7 +17,7 @@ class InsuranceFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->randomElement(['motor commercial', 'motor private'])
+            'name' => $this->faker->unique()->randomElement(['motor commercial', 'motor private'])
         ];
     }
 }
