@@ -26,7 +26,7 @@
                
                 @if(!$addInsurance)
                 <x-jet-button wire:click="addInsurance()" class="bg-green-500">
-                    Add New insurance
+                    Add New insurance type
                 </x-jet-button>
                 @endif
 
@@ -41,9 +41,7 @@
                             </th>
                             <th scope="col">
                                 Name
-                            </th>
-                           
-                          
+                            </th>                          
                             <th scope="col">
                                 Dates
                             </th>
