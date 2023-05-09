@@ -988,6 +988,10 @@ video {
   margin-left: 2rem;
   margin-right: 2rem;
 }
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 .mt-1 {
   margin-top: 0.25rem;
 }
