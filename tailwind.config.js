@@ -17,7 +17,7 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                'pg-primary': colors.orange,
+                'pg-primary': colors.gray,
                 'pg-secondary': colors.blue,
             },
             fontFamily: {

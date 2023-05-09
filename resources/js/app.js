@@ -10,7 +10,7 @@ import TomSelect from "tom-select";
 
 
 window.TomSelect = TomSelect
-
+//window.flatpickr = flatpickr
 
 window.Alpine = Alpine;
 
