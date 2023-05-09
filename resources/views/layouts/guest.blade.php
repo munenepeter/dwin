@@ -29,14 +29,14 @@
             <div class="md:flex md:justify-between">
                 <div class="mb-6 md:mb-0">
                     <a href="/" class="flex items-center">
-                        <x-jet-application-mark class="block h-9 w-auto" />
-                        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Claim</span>
+                        <x-jet-application-mark class="block h-9 w-auto text-rose-700" />
+                        <span class="self-center text-2xl font-semibold text-rose-900 whitespace-nowrap dark:text-white">&nbsp;&nbsp;Claim</span>
                     </a>
                 </div>
                 <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-4">
                     <div>
-                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Covers</h2>
-                        <ul class="text-gray-600 dark:text-gray-400 font-medium">
+                        <h2 class="mb-6 text-sm font-semibold text-rose-900 uppercase dark:text-white">Covers</h2>
+                        <ul class="text-rose-700 dark:text-gray-400 font-medium">
                             <li class="">
                                 <a href="#" class="hover:underline">All Covers</a>
                             </li>
@@ -52,9 +52,9 @@
                         </ul>
                     </div>
                     <div>
-                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Client Services
+                        <h2 class="mb-6 text-sm font-semibold text-rose-900 uppercase dark:text-white">Client Services
                         </h2>
-                        <ul class="text-gray-600 dark:text-gray-400 font-medium">
+                        <ul class="text-rose-700 dark:text-gray-400 font-medium">
                             <li class="">
                                 <a href="/" class="hover:underline ">Report a Claim</a>
                             </li>
@@ -70,16 +70,16 @@
                         </ul>
                     </div>
                     <div>
-                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Other</h2>
-                        <ul class="text-gray-600 dark:text-gray-400 font-medium">
+                        <h2 class="mb-6 text-sm font-semibold text-rose-900 uppercase dark:text-white">Other</h2>
+                        <ul class="text-rose-700 dark:text-gray-400 font-medium">
                             <li class="mb-4">
 
                                 @auth
                                     <a href="{{ url('/dashboard') }}"
-                                        class=" text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                                        class=" dark:text-gray-500 underline">Dashboard</a>
                                 @else
                                     <a href="{{ route('login') }}"
-                                        class=" text-gray-700 dark:text-gray-500 hover:underline">Staff Login</a>
+                                        class=" dark:text-gray-500 hover:underline">Staff Login</a>
                                 @endauth
                             </li>
                             <li>
@@ -88,8 +88,8 @@
                         </ul>
                     </div>
                     <div>
-                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
-                        <ul class="text-gray-600 dark:text-gray-400 font-medium">
+                        <h2 class="mb-6 text-sm font-semibold text-rose-900 uppercase dark:text-white">Legal</h2>
+                        <ul class="text-rose-700 dark:text-gray-400 font-medium">
                             <li class="mb-4">
                                 <a href="#" class="hover:underline">Privacy Policy</a>
                             </li>
