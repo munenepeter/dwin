@@ -16,8 +16,8 @@ class ClientExporter extends Exporter
         return [
             ExportColumn::make('id')
                 ->label('ID'),
-            ExportColumn::make('insurance_id'),
-            ExportColumn::make('underwriter_id'),
+            ExportColumn::make('insurance.name'),
+            ExportColumn::make('underwriter.name'),
             ExportColumn::make('full_names'),
             ExportColumn::make('policy_number'),
             ExportColumn::make('risk_id'),

@@ -3,9 +3,11 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Exports\ClientExporter;
+use App\Filament\Imports\ClientImporter;
 use App\Filament\Resources\ClientResource\Pages;
 use App\Filament\Resources\ClientResource\RelationManagers;
 use App\Models\Client;
+use Filament\Tables\Actions\ImportAction;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -155,7 +157,7 @@ class ClientResource extends Resource {
                     ->sortable(),
                 Tables\Columns\TextColumn::make('annual_expiry_date')
                     ->date()
-                ->description(fn (Client $record): string => $record->annual_renewal_date)
+                    ->description(fn (Client $record): string => $record->annual_renewal_date)
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -171,7 +173,9 @@ class ClientResource extends Resource {
             ])
             ->headerActions([
                 ExportAction::make()
-                    ->exporter(ClientExporter::class)
+                    ->exporter(ClientExporter::class),
+                ImportAction::make()
+                    ->importer(ClientImporter::class)
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
