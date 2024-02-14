@@ -24,12 +24,13 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
+            ->brandLogo(fn () => view('filament.brand'))
             ->id('admin')
             ->path('admin')
             ->login()
             ->sidebarWidth('12rem')
             ->colors([
-                'primary' => Color::Rose,
+                'primary' => Color::hex("#eaa108"),
             ])
             ->databaseNotifications()
             ->databaseNotificationsPolling('30s')
@@ -41,13 +42,12 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->navigationGroups([
                 'Clients',
-                'Users',
                 'Underwriters',
-                'Insurances'
+                'Insurances',
+                'Users',
             ])
             ->widgets([
                 Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

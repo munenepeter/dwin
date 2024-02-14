@@ -20,7 +20,7 @@ use Filament\Tables\Actions\ExportAction;
 class ClientResource extends Resource {
     protected static ?string $model = Client::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
 
     protected static ?string $navigationGroup = 'Clients';
 
