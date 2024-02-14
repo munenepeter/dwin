@@ -1,7 +1,7 @@
 <x-app-layout>
     <section class="relative" id="home">
         <div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20">
-            <div class="blur-[106px] h-56 bg-gradient-to-br from-rose-500 to-purple-400 dark:from-blue-700">
+            <div class="blur-[106px] h-56 bg-gradient-to-br from-geebung-500 to-purple-400 dark:from-blue-700">
             </div>
             <div class="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"></div>
         </div>
@@ -9,18 +9,18 @@
             <div class="relative pt-36 ml-auto">
                 <div class="lg:w-2/3 text-center mx-auto">
                     <h1 class="text-gray-900 dark:text-white font-bold text-5xl md:text-6xl xl:text-7xl">Insurance
-                        Solutions for Your Most <span class="text-rose-500">Valuable Assets.</span></h1>
+                        Solutions for Your Most <span class="text-geebung-500">Valuable Assets.</span></h1>
                     <p class="mt-8 text-gray-700 dark:text-gray-300">At Dwin Insurance Agency Limited, we serve the
                         insurance needs of our customers through provision of thoughtful consultation. This leads to
                         coverage at a cost that adds value to our relationship.</p>
                     <div class="mt-16 flex flex-wrap justify-center gap-y-4 gap-x-6">
                         <a href="#"
-                            class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-rose-500 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max">
+                            class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-geebung-500 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max">
                             <span class="relative text-base font-semibold text-white">Get Qoute</span>
                         </a>
                         <a href="#"
-                            class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:border before:border-transparent before:bg-rose-500/10 before:bg-gradient-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-gray-800 sm:w-max">
-                            <span class="relative text-base font-semibold text-rose-500 dark:text-white">Learn
+                            class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:border before:border-transparent before:bg-geebung-500/10 before:bg-gradient-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-gray-800 sm:w-max">
+                            <span class="relative text-base font-semibold text-geebung-500 dark:text-white">Learn
                                 more</span>
                         </a>
                     </div>
