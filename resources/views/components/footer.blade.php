@@ -2,9 +2,13 @@
         <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
             <div class="md:flex md:justify-between">
                 <div class="mb-6 md:mb-0">
-                    <a href="/" class="flex items-center">
-                        <span class="self-center text-2xl font-bold text-rose-900 whitespace-nowrap dark:text-white">&nbsp;&nbsp;Claim</span>
-                    </a>
+                  <a href="/#home" aria-label="logo" class="flex items-center space-x-2">
+                         <div aria-hidden="true" class="flex space-x-1">
+                             <div class="h-4 w-4 rounded-full bg-gray-900 dark:bg-white"></div>
+                             <div class="h-6 w-2 bg-rose-500"></div>
+                         </div>
+                         <span class="text-2xl font-bold text-gray-900 dark:text-white">Dwin</span>
+                     </a>
                 </div>
                 <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-4">
                     <div>
@@ -75,8 +79,8 @@
             </div>
             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
             <div class="sm:flex sm:items-center sm:justify-between">
-                <span class="text-sm text-rose-500 sm:text-center dark:text-gray-400">© 2023 <a href="/"
-                        class="hover:underline">Claim™</a>. All Rights Reserved.
+                <span class="text-sm text-rose-500 sm:text-center dark:text-gray-400">© {{date('Y')}} <a href="/"
+                        class="hover:underline">Dwin Insurance Agency Limited™</a>. All Rights Reserved.
                 </span>
                 <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
                     <a href="#" class="text-rose-500 hover:text-rose-900 dark:hover:text-white">
