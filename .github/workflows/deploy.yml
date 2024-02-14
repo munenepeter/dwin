@@ -30,7 +30,6 @@ jobs:
       run: |
         cp .env.ci .env
         php artisan key:generate
-        tar czvf vendor.tgz vendor
 
     - name: Prepare for hosting
       run: |
