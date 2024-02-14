@@ -19,7 +19,7 @@ class InsuranceResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
 
-    protected static ?string $navigationGroup = 'Insurances';
+    // protected static ?string $navigationGroup = 'Insurances';
 
     public static function form(Form $form): Form
     {

@@ -19,7 +19,7 @@ class UnderwriterResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-list';
 
-    protected static ?string $navigationGroup = 'Underwriters';
+    // protected static ?string $navigationGroup = 'Underwriters';
 
     public static function form(Form $form): Form
     {

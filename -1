@@ -1,0 +1,37 @@
+[14-Feb-2024 16:34:37 Africa/Nairobi] PHP Warning:  require(/home/peter/Code/dwin/vendor/composer/../filament/filament/src/global_helpers.php): Failed to open stream: No such file or directory in /home/peter/Code/dwin/vendor/composer/autoload_real.php on line 41
+[14-Feb-2024 16:34:37 Africa/Nairobi] PHP Fatal error:  Uncaught Error: Failed opening required '/home/peter/Code/dwin/vendor/composer/../filament/filament/src/global_helpers.php' (include_path='.:/usr/share/php') in /home/peter/Code/dwin/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/peter/Code/dwin/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/peter/Code/dwin/vendor/autoload.php(25): ComposerAutoloaderInit4b29258be5aa7b96eade0397bb970026::getLoader()
+#2 Command line code(1): require_once('...')
+#3 {main}
+  thrown in /home/peter/Code/dwin/vendor/composer/autoload_real.php on line 41
+[14-Feb-2024 16:34:37 Africa/Nairobi] PHP Warning:  require(/home/peter/Code/dwin/vendor/composer/../filament/filament/src/global_helpers.php): Failed to open stream: No such file or directory in /home/peter/Code/dwin/vendor/composer/autoload_real.php on line 41
+[14-Feb-2024 16:34:37 Africa/Nairobi] PHP Fatal error:  Uncaught Error: Failed opening required '/home/peter/Code/dwin/vendor/composer/../filament/filament/src/global_helpers.php' (include_path='.:/usr/share/php') in /home/peter/Code/dwin/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/peter/Code/dwin/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/peter/Code/dwin/vendor/autoload.php(25): ComposerAutoloaderInit4b29258be5aa7b96eade0397bb970026::getLoader()
+#2 Command line code(1): require_once('...')
+#3 {main}
+  thrown in /home/peter/Code/dwin/vendor/composer/autoload_real.php on line 41
+[14-Feb-2024 16:34:37 Africa/Nairobi] PHP Warning:  require(/home/peter/Code/dwin/vendor/composer/../filament/filament/src/global_helpers.php): Failed to open stream: No such file or directory in /home/peter/Code/dwin/vendor/composer/autoload_real.php on line 41
+[14-Feb-2024 16:34:37 Africa/Nairobi] PHP Fatal error:  Uncaught Error: Failed opening required '/home/peter/Code/dwin/vendor/composer/../filament/filament/src/global_helpers.php' (include_path='.:/usr/share/php') in /home/peter/Code/dwin/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/peter/Code/dwin/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/peter/Code/dwin/vendor/autoload.php(25): ComposerAutoloaderInit4b29258be5aa7b96eade0397bb970026::getLoader()
+#2 Command line code(1): require_once('...')
+#3 {main}
+  thrown in /home/peter/Code/dwin/vendor/composer/autoload_real.php on line 41
+[14-Feb-2024 16:34:37 Africa/Nairobi] PHP Warning:  require(/home/peter/Code/dwin/vendor/composer/../filament/filament/src/global_helpers.php): Failed to open stream: No such file or directory in /home/peter/Code/dwin/vendor/composer/autoload_real.php on line 41
+[14-Feb-2024 16:34:37 Africa/Nairobi] PHP Fatal error:  Uncaught Error: Failed opening required '/home/peter/Code/dwin/vendor/composer/../filament/filament/src/global_helpers.php' (include_path='.:/usr/share/php') in /home/peter/Code/dwin/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/peter/Code/dwin/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/peter/Code/dwin/vendor/autoload.php(25): ComposerAutoloaderInit4b29258be5aa7b96eade0397bb970026::getLoader()
+#2 Command line code(1): require_once('...')
+#3 {main}
+  thrown in /home/peter/Code/dwin/vendor/composer/autoload_real.php on line 41
+[14-Feb-2024 13:57:29 UTC] PHP Fatal error:  Uncaught Error: Interface "App\Models\FilamentUser" not found in /home/peter/Code/dwin/app/Models/User.php:13
+Stack trace:
+#0 Command line code(1): include_once()
+#1 {main}
+  thrown in /home/peter/Code/dwin/app/Models/User.php on line 13

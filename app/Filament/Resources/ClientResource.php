@@ -22,7 +22,7 @@ class ClientResource extends Resource {
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
 
-    protected static ?string $navigationGroup = 'Clients';
+    // protected static ?string $navigationGroup = 'Clients';
 
     public static function form(Form $form): Form {
         return $form
@@ -179,6 +179,7 @@ class ClientResource extends Resource {
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

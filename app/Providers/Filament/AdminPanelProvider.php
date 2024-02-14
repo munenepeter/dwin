@@ -18,17 +18,15 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
-class AdminPanelProvider extends PanelProvider
-{
-    public function panel(Panel $panel): Panel
-    {
+class AdminPanelProvider extends PanelProvider {
+    public function panel(Panel $panel): Panel {
         return $panel
             ->default()
             ->brandLogo(fn () => view('filament.brand'))
             ->id('admin')
             ->path('admin')
             ->login()
-            ->sidebarWidth('11.5rem')
+            ->topNavigation()
             ->colors([
                 'primary' => Color::hex("#eaa108"),
             ])
@@ -40,12 +38,6 @@ class AdminPanelProvider extends PanelProvider
                 Pages\Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
-            ->navigationGroups([
-                'Clients',
-                'Underwriters',
-                'Insurances',
-                'Users',
-            ])
             ->widgets([
                 Widgets\AccountWidget::class,
             ])
