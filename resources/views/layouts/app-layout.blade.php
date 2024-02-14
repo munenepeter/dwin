@@ -21,6 +21,7 @@
 </head>
 
 <body class="font-sans antialiased bg-white dark:bg-gray-900">
+    <x-header/>
     <main class="min-h-screen space-y-40 pb-10 dark:bg-gray-800">
      {{$slot}}
     </main>
