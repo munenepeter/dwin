@@ -49,7 +49,7 @@ jobs:
         password: ${{ secrets.ftp_password }}
         protocol: ftps
         local-dir: "./"
-        server-dir: "./test/"
+        server-dir: "./dwin/"
         exclude: |
           **/.git*
           **/.git*/**
@@ -67,4 +67,4 @@ jobs:
 
     - name: Replace front end assets
       run: |
-        curl https://test.co.ke/mv.php   
+        curl https://test.chungu.co.ke/mv.php   
