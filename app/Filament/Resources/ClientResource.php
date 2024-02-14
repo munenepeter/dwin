@@ -16,6 +16,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Tables\Actions\ExportAction;
+use Illuminate\Support\Carbon;
 
 class ClientResource extends Resource {
     protected static ?string $model = Client::class;
@@ -134,10 +135,12 @@ class ClientResource extends Resource {
                 Tables\Columns\TextColumn::make('full_names')
                     ->description(fn (Client $record): string => $record->risk_id, position: 'above')
                     ->sortable()
-                    ->searchable(),
+                    ->searchable()
+                    ->label('Client'),
                 Tables\Columns\TextColumn::make('policy_number')
                     ->description(fn (Client $record): string => ucwords($record->underwriter->name))
-                    ->searchable(),
+                    ->searchable()
+                    ->label('Policy'),
                 Tables\Columns\TextColumn::make('sum_insured')
                     ->numeric()
                     ->sortable(),
@@ -154,11 +157,13 @@ class ClientResource extends Resource {
                     ->sortable(),
                 Tables\Columns\TextColumn::make('annual_total_premium')
                     ->numeric()
-                    ->sortable(),
+                    ->sortable()
+                    ->label('Annual Premium'),
                 Tables\Columns\TextColumn::make('annual_expiry_date')
                     ->date()
-                    ->description(fn (Client $record): string => $record->annual_renewal_date)
-                    ->sortable(),
+                    ->description(fn (Client $record): string => Carbon::parse($record->annual_renewal_date)->format('M d, Y'))
+                    ->sortable()
+                    ->label('Dates'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
